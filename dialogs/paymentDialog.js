@@ -7,11 +7,14 @@ const { DateResolverDialog } = require("./dateResolverDialog");
 const { LuisRecognizer } = require("botbuilder-ai");
 const PayByCash = require("../bots/resources/payByCash.json");
 const DirectDebitPayment = require("../bots/resources/directDebitPayment.json");
+const CantUsePayPoint = require("../bots/resources/cantUsePayPoint.json");
 
 const CONFIRM_PROMPT = "confirmPrompt";
 const DATE_RESOLVER_DIALOG = "dateResolverDialog";
 const TEXT_PROMPT = "textPrompt";
 const WATERFALL_DIALOG = "waterfallDialog";
+
+const DEFAULT_MESSAGE = "Was the answer was helpful.";
 
 class PaymentDialog extends ComponentDialog {
     constructor(luisRecognizer, id) {
@@ -24,7 +27,11 @@ class PaymentDialog extends ComponentDialog {
             .addDialog(new ConfirmPrompt(CONFIRM_PROMPT))
             .addDialog(new DateResolverDialog(DATE_RESOLVER_DIALOG))
             .addDialog(
-                new WaterfallDialog(WATERFALL_DIALOG, [this.paymentStep.bind(this), this.actStep.bind(this)])
+                new WaterfallDialog(WATERFALL_DIALOG, [
+                    this.paymentStep.bind(this),
+                    this.actStep.bind(this),
+                    this.finalStep.bind(this)
+                ])
             );
 
         this.initialDialogId = WATERFALL_DIALOG;
@@ -52,13 +59,17 @@ class PaymentDialog extends ComponentDialog {
             case "CashPayment": {
                 const payCash = CardFactory.adaptiveCard(PayByCash);
                 await stepContext.context.sendActivity({ attachments: [payCash] });
-                return await stepContext.endDialog();
+                const msg = MessageFactory.text(DEFAULT_MESSAGE, DEFAULT_MESSAGE, InputHints.ExpectingInput);
+                return await stepContext.prompt(CONFIRM_PROMPT, { prompt: msg });
             }
 
             case "DebitCardPayment": {
                 const directDebitPayments = CardFactory.adaptiveCard(DirectDebitPayment);
                 await stepContext.context.sendActivity({ attachments: [directDebitPayments] });
-                return await stepContext.endDialog();
+                const msg = MessageFactory.text(DEFAULT_MESSAGE, DEFAULT_MESSAGE, InputHints.ExpectingInput);
+
+                // Offer a YES/NO prompt.
+                return await stepContext.prompt(CONFIRM_PROMPT, { prompt: msg });
             }
 
             case "SSPPayment": {
@@ -67,6 +78,13 @@ class PaymentDialog extends ComponentDialog {
                     : "debit card here";
 
                 return await stepContext.prompt("TextPrompt", { prompt: messageText });
+            }
+
+            case "CantUsePayPoint": {
+                const cantUsePayPoint = CardFactory.adaptiveCard(CantUsePayPoint);
+                await stepContext.context.sendActivity({ attachments: [cantUsePayPoint] });
+                const msg = MessageFactory.text(DEFAULT_MESSAGE, DEFAULT_MESSAGE, InputHints.ExpectingInput);
+                return await stepContext.prompt(CONFIRM_PROMPT, { prompt: msg });
             }
 
             default: {
@@ -83,6 +101,20 @@ class PaymentDialog extends ComponentDialog {
         }
 
         return await stepContext.next();
+    }
+
+    /**
+     * Complete the interaction and end the dialog.
+     */
+    async finalStep(stepContext) {
+        if (stepContext.result === true) {
+            return await stepContext.endDialog();
+        }
+        const messageText = stepContext.options.restartMsg
+            ? stepContext.options.restartMsg
+            : "If you’d rather speak to somebody about your question, please give us a call on 0300 555 0510. \n\nWe’re here 8.30am – 6.30pm Monday to Friday and 8.30am – 1.00pm Saturday.";
+
+        return await stepContext.prompt("TextPrompt", { prompt: messageText });
     }
 }
 

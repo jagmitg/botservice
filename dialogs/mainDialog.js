@@ -70,7 +70,7 @@ class MainDialog extends ComponentDialog {
 
         const messageText = stepContext.options.restartMsg
             ? stepContext.options.restartMsg
-            : "Hi [username], I’m SIPPI the TVL chatbot. 🙂 \n \n I’m here to answer your questions about the Simple Payment Plan.";
+            : "Hi Swetha, I’m SIPPI the TVL chatbot. 🙂 \n \n I’m here to answer your questions about the Simple Payment Plan.";
         const promptMessage = MessageFactory.suggestedActions(
             ["Make a Payment", "Renew my TV licence", "Update my name, address or bank details"],
             messageText,
@@ -99,8 +99,38 @@ class MainDialog extends ComponentDialog {
             }
 
             case "RenewMyTvLicense": {
-                console.log("testing");
                 return await stepContext.beginDialog("renewDialog");
+            }
+
+            case "CashPayment": {
+                const payCash = CardFactory.adaptiveCard(PayByCash);
+                await stepContext.context.sendActivity({ attachments: [payCash] });
+                const msg = MessageFactory.text(DEFAULT_MESSAGE, DEFAULT_MESSAGE, InputHints.ExpectingInput);
+                return await stepContext.prompt(CONFIRM_PROMPT, { prompt: msg });
+            }
+
+            case "DebitCardPayment": {
+                const directDebitPayments = CardFactory.adaptiveCard(DirectDebitPayment);
+                await stepContext.context.sendActivity({ attachments: [directDebitPayments] });
+                const msg = MessageFactory.text(DEFAULT_MESSAGE, DEFAULT_MESSAGE, InputHints.ExpectingInput);
+
+                // Offer a YES/NO prompt.
+                return await stepContext.prompt(CONFIRM_PROMPT, { prompt: msg });
+            }
+
+            case "SSPPayment": {
+                const messageText = stepContext.options.restartMsg
+                    ? stepContext.options.restartMsg
+                    : "debit card here";
+
+                return await stepContext.prompt("TextPrompt", { prompt: messageText });
+            }
+
+            case "CantUsePayPoint": {
+                const cantUsePayPoint = CardFactory.adaptiveCard(CantUsePayPoint);
+                await stepContext.context.sendActivity({ attachments: [cantUsePayPoint] });
+                const msg = MessageFactory.text(DEFAULT_MESSAGE, DEFAULT_MESSAGE, InputHints.ExpectingInput);
+                return await stepContext.prompt(CONFIRM_PROMPT, { prompt: msg });
             }
 
             default: {

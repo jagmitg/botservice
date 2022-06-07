@@ -2,10 +2,6 @@
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
     "type": "AdaptiveCard",
     "version": "1.0",
-    "backgroundImage": {
-        "url": "https://res.cloudinary.com/dcfljmapo/image/upload/v1584015689/botback_p4jbvu.png",
-        "verticalAlignment": "center"
-    },
     "body": [
         {
             "type": "Image",
@@ -19,7 +15,7 @@
             "size": "default",
             "color": "white",
             "weight": "Bolder",
-            "text": "SIPPI the TVL chatbot",
+            "text": "SIPPI the TV Licensing chatbot",
             "wrap": true,
             "maxLines": 0,
             "horizontalAlignment": "Center",

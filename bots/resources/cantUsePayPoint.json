@@ -1,0 +1,46 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "backgroundImage": "https://res.cloudinary.com/dcfljmapo/image/upload/v1584015592/botback_wyqbp5.png",
+    "body": [
+        {
+            "type": "TextBlock",
+            "spacing": "medium",
+            "size": "default",
+            "weight": "bolder",
+            "color": "accent",
+            "text": "Paypoint",
+            "wrap": true,
+            "maxLines": 0
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "Don’t worry, if you’re self-isolating or your local PayPoint is closed (or Post Office in the Isle of Man), you can still pay using a debit or credit card on our website.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "Alternatively, you can also make a payment by debit or credit card over the phone with a member of our customer service team. ",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        },
+
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "If you would like to  discuss other payment options then please contact our customer service team on 0300 555 0510.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        }
+    ]
+}
