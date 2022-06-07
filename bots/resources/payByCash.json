@@ -1,0 +1,64 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "backgroundImage": "https://res.cloudinary.com/dcfljmapo/image/upload/v1584015592/botback_wyqbp5.png",
+    "body": [
+        {
+            "type": "TextBlock",
+            "spacing": "medium",
+            "size": "default",
+            "weight": "bolder",
+            "color": "accent",
+            "text": "Making a cash payment",
+            "wrap": true,
+            "maxLines": 0
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "At PayPoint, you can buy or renew a licence, make payments on a TV Licensing payment card, or save towards your next licence with our savings card. You can also make payments by debit card or cash.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "There are around 29,000 UK PayPoints, in places like newsagents, fuel stations and supermarkets. If you need to check disabled access at any PayPoint, please call 0800 310 0000.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        },
+        {
+            "type": "TextBlock",
+            "spacing": "medium",
+            "size": "default",
+            "weight": "bolder",
+            "color": "accent",
+            "text": "Find your nearest PayPoint",
+            "wrap": true,
+            "maxLines": 0
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "PayPoint is not available in the Channel Islands or Isle of Man, but you can pay at your local post office.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "Please remember to get a receipt for each payment.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        }
+    ]
+}

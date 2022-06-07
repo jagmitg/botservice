@@ -1,0 +1,102 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "backgroundImage": "https://res.cloudinary.com/dcfljmapo/image/upload/v1584015592/botback_wyqbp5.png",
+    "body": [
+        {
+            "type": "TextBlock",
+            "spacing": "medium",
+            "size": "default",
+            "weight": "bolder",
+            "color": "accent",
+            "text": "Making a Direct Debit Payment",
+            "wrap": true,
+            "maxLines": 0
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "Direct Debit is our most popular payment option. For millions of customers, it’s the most convenient way to pay, as your licence is automatically renewed each year.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        },
+        {
+            "type": "TextBlock",
+            "spacing": "medium",
+            "size": "default",
+            "weight": "bolder",
+            "color": "accent",
+            "text": "Pay monthly",
+            "wrap": true,
+            "maxLines": 0
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "You’ll usually pay for your first licence over six months, at around £26.50 a month. If we have to spread the cost across less than six months, each payment may be slightly higher. After this, you pay for your next licence in 12 monthly instalments of around £13.25 – six payments before your licence is due to be renewed, and six after.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        },
+        {
+            "type": "TextBlock",
+            "spacing": "medium",
+            "size": "default",
+            "weight": "bolder",
+            "color": "accent",
+            "text": "Pay quarterly",
+            "wrap": true,
+            "maxLines": 0
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "You’ll pay instalments of around £41 every three months.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "Unlike other payment methods, with quarterly payments you don’t pay for any of your licence upfront. As a result, each quarterly payment includes a £1.25 charge.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        },
+        {
+            "type": "TextBlock",
+            "spacing": "medium",
+            "size": "default",
+            "weight": "bolder",
+            "color": "accent",
+            "text": "Pay yearly",
+            "wrap": true,
+            "maxLines": 0
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "Colour and black and white licences",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        },
+        {
+            "type": "TextBlock",
+            "size": "Small",
+            "isSubtle": true,
+            "text": "You’ll make a single payment of £159 every 12 months for a colour licence, or £53.50 for a black and white licence.",
+            "wrap": true,
+            "maxLines": 0,
+            "separator": true
+        }
+    ]
+}

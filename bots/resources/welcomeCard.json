@@ -1,0 +1,37 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "backgroundImage": {
+        "url": "https://res.cloudinary.com/dcfljmapo/image/upload/v1584015689/botback_p4jbvu.png",
+        "verticalAlignment": "center"
+    },
+    "body": [
+        {
+            "type": "Image",
+            "url": "https://res.cloudinary.com/dcfljmapo/image/upload/v1585051403/bot_qv7hvp.gif",
+            "size": "large",
+            "horizontalAlignment": "center"
+        },
+        {
+            "type": "TextBlock",
+            "spacing": "Medium",
+            "size": "default",
+            "color": "white",
+            "weight": "Bolder",
+            "text": "SIPPI the TVL chatbot",
+            "wrap": true,
+            "maxLines": 0,
+            "horizontalAlignment": "Center",
+            "separator": true
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.OpenUrl",
+            "title": "Help FAQ",
+            "url": "https://www.tvlicensing.co.uk/faqs",
+            "color": "good"
+        }
+    ]
+}
